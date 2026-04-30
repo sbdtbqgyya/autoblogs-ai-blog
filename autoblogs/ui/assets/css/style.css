@@ -1,0 +1,148 @@
+/* Auto Blogger — Custom Streamlit Theme Overrides */
+
+/* --- typography --- */
+html,
+body,
+[class*="css"] {
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+}
+
+/* --- metric cards --- */
+[data-testid="stMetric"] {
+  background-color: #f8f9fb;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 16px;
+}
+
+[data-testid="stMetricValue"] {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a202c;
+}
+
+[data-testid="stMetricLabel"] {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #718096;
+}
+
+/* --- sidebar --- */
+[data-testid="stSidebarNav"] {
+  padding-top: 0;
+}
+
+section[data-testid="stSidebar"] {
+  background-color: #1a1f2e;
+}
+
+section[data-testid="stSidebar"] * {
+  color: #e2e8f0 !important;
+}
+
+/* --- sidebar heading (top-center, above nav links) --- */
+[data-testid="stSidebarNav"]::before {
+  content: "AutoBlogs UI";
+  display: block;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #e2e8f0 !important;
+  padding: 1rem 0 1rem 0;
+  border-bottom: 1px solid #2d3748;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.03em;
+}
+
+/* --- sidebar info button (fixed bottom-left) --- */
+.sidebar-info-btn {
+  position: fixed;
+  bottom: 1rem;
+  left: 0.75rem;
+  z-index: 9999;
+}
+
+.sidebar-info-btn a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: #2d3748;
+  color: #a0aec0 !important;
+  font-size: 0.75rem;
+  font-style: italic;
+  font-weight: 700;
+  text-decoration: none !important;
+  border: 1px solid #4a5568;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.sidebar-info-btn a:hover {
+  background-color: #3b82f6;
+  color: #ffffff !important;
+  border-color: #3b82f6;
+}
+
+/* --- buttons --- */
+.stButton > button[kind="primary"] {
+  background-color: #3b82f6;
+  border-color: #3b82f6;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.stButton > button[kind="primary"]:hover {
+  background-color: #2563eb;
+  border-color: #2563eb;
+}
+
+/* --- expanders --- */
+[data-testid="stExpander"] {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+/* --- status badges --- */
+[data-testid="stAlert"] {
+  border-radius: 8px;
+}
+
+/* --- dataframe --- */
+[data-testid="stDataFrame"] {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+/* --- code blocks --- */
+.stCode {
+  border-radius: 8px;
+}
+
+/* --- dividers --- */
+hr {
+  border-color: #e2e8f0;
+  margin: 1.5rem 0;
+}
+
+/* --- footer --- */
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 2px 0;
+}
+
+/* header */
+header {
+  text-align: center;
+  padding: 5px 0;
+}

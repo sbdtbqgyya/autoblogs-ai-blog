@@ -1,0 +1,14 @@
+# Below is a configuration of the Streamlit (st) Application
+
+[server]
+
+    # list of directories that should not be watched for changes
+    folderWatchBlacklist = ['.git/', '.github/']
+
+    # enable cross-origin sharing of st application
+    enableCORS = false
+
+[browser]
+
+    # send usage statistics to st developers
+    gatherUsageStats = false
