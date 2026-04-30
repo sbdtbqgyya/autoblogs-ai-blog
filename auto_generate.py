@@ -1,65 +1,99 @@
 import os
 import datetime
 import subprocess
+from dotenv import load_dotenv
 
 # =========================
-# 📅 生成文件名
+# 🔧 初始化
 # =========================
-today = datetime.datetime.now().strftime("%Y-%m-%d-%H%M")
-filename = f"post-{today}.md"
+load_dotenv()
 
-print("🚀 开始生成文章:", filename)
-
-# =========================
-# 🤖 调用 CLI（无交互版）
-# =========================
 env = os.environ.copy()
 env["PYTHONPATH"] = "."
 
-process = subprocess.Popen(
-    ["python3", "autoblogs/cli/main.py"],
-    stdin=subprocess.PIPE,
-    stdout=subprocess.PIPE,
-    stderr=subprocess.PIPE,
-    text=True,
-    env=env
-)
+# =========================
+# 🧠 可自定义内容（核心）
+# =========================
+topics = [
+    "AI赚钱方法",
+    "ChatGPT教程",
+    "自动化副业",
+    "AI工具推荐",
+    "AI写作赚钱"
+]
 
-input_data = f"""AI工具趋势 {today}
-写一篇关于AI工具、自动化和赚钱的SEO博客文章
-AI工具, 自动化, ChatGPT, 赚钱, AI副业
+PROMPT_TEMPLATE = "写一篇关于{topic}的SEO博客文章，适合新手阅读，结构清晰，有小标题"
+KEYWORDS = "AI, ChatGPT, 自动化, 副业, 赚钱"
+
+# =========================
+# 📅 时间
+# =========================
+today = datetime.datetime.now().strftime("%Y-%m-%d-%H%M")
+
+# =========================
+# 🚀 批量生成
+# =========================
+generated_files = []
+
+for i, topic in enumerate(topics):
+    filename = f"post-{today}-{i}.md"
+
+    print(f"\n🚀 正在生成: {filename}")
+
+    process = subprocess.Popen(
+        ["./venv/bin/python", "autoblogs/cli/main.py"],
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+        env=env
+    )
+
+    input_data = f"""{topic}
+{PROMPT_TEMPLATE.format(topic=topic)}
+{KEYWORDS}
 {filename}
 """
 
-stdout, stderr = process.communicate(input_data)
+    stdout, stderr = process.communicate(input_data)
 
-print(stdout)
+    print(stdout)
 
-if stderr:
-    print("❌ 错误信息：")
-    print(stderr)
+    if stderr:
+        print("❌ 错误：", stderr)
+
+    # 检查文件是否生成
+    output_path = os.path.join("output", filename)
+    if os.path.exists(output_path):
+        print(f"✅ 成功: {filename}")
+        generated_files.append(filename)
+    else:
+        print(f"❌ 失败: {filename}")
 
 # =========================
-# 📂 检查是否生成成功
+# 📊 总结
 # =========================
-output_path = os.path.join("output", filename)
+print("\n====================")
+print(f"生成成功: {len(generated_files)} 篇")
+print("====================")
 
-if not os.path.exists(output_path):
-    print("❌ 文章生成失败（未生成文件）")
+if len(generated_files) == 0:
+    print("❌ 没有生成任何文章，终止")
     exit()
-
-print("✅ 文章生成成功:", output_path)
 
 # =========================
 # 🚀 Git 自动提交
 # =========================
-os.system("git add .")
-os.system(f'git commit -m "auto post {today}"')
+print("\n🚀 开始提交到 GitHub...")
 
-# ⚠️ 这里不会再卡密码（前提你已设置 token）
+os.system("git add .")
+os.system(f'git commit -m "auto batch post {today}"')
+
 push_result = os.system("git push")
 
 if push_result != 0:
-    print("⚠️ git push 失败（可能没设置 token）")
+    print("⚠️ push 失败（检查 token）")
 else:
-    print("🚀 已自动推送到 GitHub")
+    print("🚀 推送成功")
+
+print("\n🎉 自动内容系统运行完成")
