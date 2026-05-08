@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 针对 Markdown 表格和代码块的优化样式 */
+        .content-body table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        .content-body th, .content-body td { border: 1px solid #e5e7eb; padding: 0.75rem; text-align: left; }
+        .content-body th { background: #f9fafb; }
+        .content-body pre { background: #1e293b; color: #fff; padding: 1.5rem; border-radius: 0.75rem; overflow-x: auto; margin: 1rem 0; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div id="ad-overlay" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md">
+        <div class="bg-white rounded-3xl p-8 max-w-md w-full mx-4 shadow-2xl relative text-center">
+            <button id="close-btn" disabled class="absolute -top-4 -right-4 bg-white text-gray-800 w-12 h-12 rounded-full shadow-2xl flex items-center justify-center font-black disabled:opacity-30 transition-all">
+                <span id="timer">8</span>
+            </button>
+            <h3 class="text-xl font-bold mb-2">赞助商内容</h3>
+            <p class="text-sm text-gray-400 mb-6">正在为您解锁优质资源，请稍等...</p>
+            
+            <div class="h-64 bg-gray-100 rounded-2xl flex items-center justify-center mb-6 border border-gray-200">
+                <span class="text-gray-300 italic text-sm">Google AdSense 展示广告位</span>
+            </div>
+            
+            <p id="status-text" class="text-blue-600 font-bold animate-pulse text-sm">正在加载正文...</p>
+        </div>
+    </div>
+
+    <nav class="bg-blue-600 text-white py-4 px-12 flex justify-between items-center shadow-md">
+        <h1 class="text-lg font-bold">🤖 详情页</h1>
+        <a href="/" class="hover:underline">← 返回首页</a>
+    </nav>
+
+    <main class="max-w-4xl mx-auto my-12 bg-white rounded-3xl shadow-xl p-12 border border-gray-100">
+        <h1 class="text-4xl font-black text-gray-900 mb-8 pb-6 border-b">{{ title }}</h1>
+        <div class="content-body text-gray-800 leading-relaxed">
+            {{ content | safe }}
+        </div>
+    </main>
+
+    <script>
+        (function() {
+            let timeLeft = 8;
+            const timerEl = document.getElementById('timer');
+            const closeBtn = document.getElementById('close-btn');
+            const overlay = document.getElementById('ad-overlay');
+            const statusText = document.getElementById('status-text');
+
+            const countdown = setInterval(() => {
+                timeLeft--;
+                timerEl.innerText = timeLeft;
+                if (timeLeft <= 0) {
+                    clearInterval(countdown);
+                    timerEl.innerText = '✕';
+                    closeBtn.disabled = false;
+                    closeBtn.classList.add('bg-blue-600', 'text-white');
+                    statusText.innerText = "感谢支持，正文已解锁！";
+                    statusText.classList.remove('animate-pulse');
+                    statusText.classList.add('text-green-600');
+                }
+            }, 1000);
+
+            closeBtn.onclick = () => {
+                overlay.style.display = 'none';
+            };
+        })();
+    </script>
+</body>
+</html>

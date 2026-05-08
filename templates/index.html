@@ -43,9 +43,9 @@
             </h2>
             {% for post in posts %}
             <article class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition">
-                <h3 class="text-xl font-bold text-gray-900 mb-2">{{ post.title }}</h3>
-                <p class="text-gray-400 text-xs mb-4">发布时间: {{ post.date }}</p>
-                <a href="/post/{{ post.filename }}" target="_blank" class="inline-block bg-blue-600 text-white font-medium py-2 px-4 rounded-xl hover:bg-blue-700 shadow-lg transition-colors">立即阅读全文</a> <a href="/" class="text-blue-600 font-medium text-sm hover:underline">返回首页</a>
+                 <h3 class="text-xl font-bold text-gray-900 mb-2">{{ post.title|replace('_', ' ') }}</h3>
+                 <p class="text-gray-400 text-xs mb-4">发布时间: {{ post.date }}</p>
+                 <a href="/post/{{ post.filename }}" target="_blank" class="inline-block bg-blue-600 text-white font-medium py-2 px-4 rounded-xl hover:bg-blue-700 shadow-lg transition-colors">立即阅读全文</a> <a href="/" class="text-blue-600 font-medium text-sm hover:underline">返回首页</a>
             </article>
             {% endfor %}
         </section>
