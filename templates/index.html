@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI工具测评/免费资源指南</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <nav class="bg-blue-600 text-white shadow-lg py-4 px-12 flex justify-between items-center sticky top-0 z-50">
+        <h1 class="text-xl font-bold">🤖 AI工具测评/免费资源指南</h1>
+        <div class="space-x-4">
+            <a href="/" class="hover:underline">首页</a>
+            <a href="#" class="bg-blue-700 px-4 py-1 rounded-lg">投稿资源</a>
+        </div>
+    </nav>
+
+    <main class="max-w-[1440px] mx-auto grid grid-cols-12 gap-6 p-8">
+        <aside class="col-span-12 md:col-span-3 space-y-6">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                <h2 class="text-blue-600 font-bold border-l-4 border-blue-600 pl-3 mb-6">资源库导航</h2>
+                <nav class="space-y-2">
+                    <a href="/" class="flex items-center p-3 rounded-xl hover:bg-blue-50 transition">📚 全部测评</a>
+                    <a href="/?category=视频" class="flex items-center p-3 rounded-xl hover:bg-blue-50 transition">🎬 视频/动画工具</a>
+                    <a href="/?category=绘图" class="flex items-center p-3 rounded-xl hover:bg-blue-50 transition">🎨 AI 绘图/设计</a>
+                    <a href="/?category=音乐" class="flex items-center p-3 rounded-xl hover:bg-blue-50 transition">🎵 音乐/音频黑科技</a>
+                    <a href="/?category=GitHub" class="flex items-center p-3 rounded-xl hover:bg-blue-50 transition">👨‍💻 GitHub 热门开源</a>
+                    <a href="/?category=资源" class="flex items-center p-3 rounded-xl hover:bg-blue-50 transition">🚀 独立开发者资源</a>
+                </nav>
+            </div>
+
+            <div class="bg-orange-50 p-5 rounded-2xl border border-orange-100 shadow-sm">
+                <p class="text-[10px] text-orange-400 font-bold mb-3 uppercase tracking-widest">推荐位广告</p>
+                <div class="aspect-video bg-gray-200 rounded-lg mb-3 flex items-center justify-center text-gray-400">广告图 16:9</div>
+                <h4 class="font-bold text-gray-800 text-sm">本周 AI 神器推荐</h4>
+                <p class="text-xs text-gray-500 mt-1">这里可以放你的 Affiliate 推广链接。</p>
+            </div>
+        </aside>
+
+        <section class="col-span-12 md:col-span-6 space-y-4">
+            <h2 class="text-lg font-bold text-gray-800 flex items-center px-2">
+                <span class="w-2 h-6 bg-blue-600 mr-3 rounded-full"></span>最新更新
+            </h2>
+            {% for post in posts %}
+            <article class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                <h3 class="text-xl font-bold text-gray-900 mb-2">{{ post.title }}</h3>
+                <p class="text-gray-400 text-xs mb-4">发布时间: {{ post.date }}</p>
+                <a href="/post/{{ post.filename }}" target="_blank" class="inline-block bg-blue-600 text-white font-medium py-2 px-4 rounded-xl hover:bg-blue-700 shadow-lg transition-colors">立即阅读全文</a> <a href="/" class="text-blue-600 font-medium text-sm hover:underline">返回首页</a>
+            </article>
+            {% endfor %}
+        </section>
+
+        <aside class="col-span-12 md:col-span-3 space-y-6">
+            <div class="bg-[#0f172a] p-6 rounded-2xl shadow-xl text-white">
+                <h3 class="text-sm font-medium mb-6">📊 实时监控</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white/5 p-4 rounded-xl text-center">
+                        <p class="text-2xl font-black text-blue-400">{{ total_count }}</p>
+                        <p class="text-[10px] text-gray-400 uppercase">总资源</p>
+                    </div>
+                    <div class="bg-white/5 p-4 rounded-xl text-center">
+                        <p class="text-green-400 font-bold">运行中</p>
+                        <p class="text-[10px] text-gray-400 uppercase">状态</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-2 rounded-2xl border border-gray-100 shadow-sm sticky top-24">
+                <div class="h-[600px] bg-gray-50 flex items-center justify-center border-2 border-dashed border-gray-200 rounded-xl">
+                    <span class="text-gray-300 text-xs text-center uppercase px-4">Google AdSense<br>(300x600)</span>
+                </div>
+            </div>
+        </aside>
+    </main>
+</body>
+</html>
