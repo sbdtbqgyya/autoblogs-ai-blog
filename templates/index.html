@@ -3,74 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI工具测评/免费资源指南</title>
+    <title>🤖 AI工具测评/免费资源指南</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6032281361790001"
+         crossorigin="anonymous"></script>
+
+    <style>
+        article { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid #f1f5f9; }
+        article:hover { transform: translateY(-5px); border-color: #3b82f6; box-shadow: 0 12px 20px -5px rgba(59, 130, 246, 0.08); }
+        .btn-outline-custom { background: #ffffff; color: #64748b; border: 1px solid #e2e8f0; transition: all 0.3s ease; }
+        .btn-outline-custom:hover { background: #f8fafc; color: #2563eb; border-color: #2563eb; }
+        .goog-te-gadget span { display: none !important; }
+        .goog-te-combo { border-radius: 8px; border: 1px solid #e2e8f0; padding: 4px; font-size: 12px; outline: none; }
+        @media (max-width: 768px) {
+            body { background-color: #f1f5f9 !important; }
+            nav h1 { font-size: 1.1rem !important; }
+            aside nav a { font-size: 17px !important; padding: 14px 10px !important; }
+            .post-title { font-size: 1.3rem !important; font-weight: 900 !important; }
+            .bg-slate-900 { background-color: #334155 !important; border-radius: 24px !important; }
+            .sidebar-ad-container { display: none !important; }
+        }
+
+        /* ✨ 粘贴到这里，从底层卡死内部动态组件的高度，使其完美适配 175px 容器 ✨ */
+        .sidebar-ad-container div { height: 175px !important; }
+        .sidebar-ad-container ins { height: 150px !important; max-height: 150px !important; }
+        iframe[id^="aswift"] { max-height: 150px !important; }
+    </style>
 </head>
-<body class="bg-gray-50 min-h-screen">
-    <nav class="bg-blue-600 text-white shadow-lg py-4 px-12 flex justify-between items-center sticky top-0 z-50">
+<body class="bg-[#f8fafc] min-h-screen text-slate-900">
+    <nav class="bg-blue-600 text-white py-4 px-12 flex justify-between items-center shadow-xl sticky top-0 z-50">
         <h1 class="text-xl font-bold">🤖 AI工具测评/免费资源指南</h1>
-        <div class="space-x-4">
-            <a href="/" class="hover:underline">首页</a>
-            <a href="#" class="bg-blue-700 px-4 py-1 rounded-lg">投稿资源</a>
-        </div>
+        <div id="google_translate_element"></div>
     </nav>
 
-    <main class="max-w-[1440px] mx-auto grid grid-cols-12 gap-6 p-8">
-        <aside class="col-span-12 md:col-span-3 space-y-6">
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                <h2 class="text-blue-600 font-bold border-l-4 border-blue-600 pl-3 mb-6">资源库导航</h2>
-                <nav class="space-y-2">
-                    <a href="/" class="flex items-center p-3 rounded-xl hover:bg-blue-50 transition">📚 全部测评</a>
-                    <a href="/?category=视频" class="flex items-center p-3 rounded-xl hover:bg-blue-50 transition">🎬 视频/动画工具</a>
-                    <a href="/?category=绘图" class="flex items-center p-3 rounded-xl hover:bg-blue-50 transition">🎨 AI 绘图/设计</a>
-                    <a href="/?category=音乐" class="flex items-center p-3 rounded-xl hover:bg-blue-50 transition">🎵 音乐/音频黑科技</a>
-                    <a href="/?category=GitHub" class="flex items-center p-3 rounded-xl hover:bg-blue-50 transition">👨‍💻 GitHub 热门开源</a>
-                    <a href="/?category=资源" class="flex items-center p-3 rounded-xl hover:bg-blue-50 transition">🚀 独立开发者资源</a>
-                </nav>
-            </div>
+    <main class="max-w-[1550px] mx-auto p-8 flex flex-col md:flex-row gap-8">
+        <aside class="w-full md:w-[300px] shrink-0 space-y-6">
+            <div class="bg-white p-6 rounded-[32px] shadow-sm border border-slate-100 sticky top-24">
+                <div class="mb-6">
+                    <h2 class="text-blue-600 font-black border-l-4 border-blue-600 pl-3 mb-3 text-base">内容搜索</h2>
+                    <input type="text" id="searchInput" placeholder="搜索免费资源..." 
+                           class="w-full bg-slate-50 border border-slate-200 rounded-2xl py-2.5 px-4 text-[12px] focus:ring-2 focus:ring-blue-500 outline-none">
+                </div>
 
-            <div class="bg-orange-50 p-5 rounded-2xl border border-orange-100 shadow-sm">
-                <p class="text-[10px] text-orange-400 font-bold mb-3 uppercase tracking-widest">推荐位广告</p>
-                <div class="aspect-video bg-gray-200 rounded-lg mb-3 flex items-center justify-center text-gray-400">广告图 16:9</div>
-                <h4 class="font-bold text-gray-800 text-sm">本周 AI 神器推荐</h4>
-                <p class="text-xs text-gray-500 mt-1">这里可以放你的 Affiliate 推广链接。</p>
+                <h2 class="text-blue-600 font-black border-l-4 border-blue-600 pl-3 mb-3 text-base">全分类导航</h2>
+                <nav class="space-y-1 text-[13px]">
+                    <a href="/" onclick="if(window.adsbygoogle) { (adsbygoogle = window.adsbygoogle || []).push({}); }" class="block p-2 rounded-xl hover:bg-blue-50 transition">🌈 全部免费资源</a>
+                    <a href="/?category=GitHub开源站" onclick="if(window.adsbygoogle) { (adsbygoogle = window.adsbygoogle || []).push({}); }" class="block p-2 rounded-xl hover:bg-blue-50 transition font-bold">🐙 GitHub开源站</a>
+                    <a href="/?category=免费的AI工具" onclick="if(window.adsbygoogle) { (adsbygoogle = window.adsbygoogle || []).push({}); }" class="block p-2 rounded-xl hover:bg-blue-50 transition font-bold">🛠️ 免费的AI工具</a>
+                    <a href="/?category=免费绘图设计" onclick="if(window.adsbygoogle) { (adsbygoogle = window.adsbygoogle || []).push({}); }" class="block p-2 rounded-xl hover:bg-blue-50 transition font-bold text-blue-600">🎨 免费绘图设计</a>
+                    <a href="/?category=免费视频动画资源" onclick="if(window.adsbygoogle) { (adsbygoogle = window.adsbygoogle || []).push({}); }" class="block p-2 rounded-xl hover:bg-blue-50 transition font-bold">🎬 视频动画资源</a>
+                    <a href="/?category=免费AI音频音乐" onclick="if(window.adsbygoogle) { (adsbygoogle = window.adsbygoogle || []).push({}); }" class="block p-2 rounded-xl hover:bg-blue-50 transition font-bold">🎵 AI音频音乐</a>
+                    <a href="/?category=免费AI教学资源" onclick="if(window.adsbygoogle) { (adsbygoogle = window.adsbygoogle || []).push({}); }" class="block p-2 rounded-xl hover:bg-blue-50 transition font-bold">📚 AI教学资源</a>
+                    <a href="/?category=免费AI写作" onclick="if(window.adsbygoogle) { (adsbygoogle = window.adsbygoogle || []).push({}); }" class="block p-2 rounded-xl hover:bg-blue-50 transition font-bold">✍️ 免费AI写作</a>
+                    <a href="/?category=免费图片素材" onclick="if(window.adsbygoogle) { (adsbygoogle = window.adsbygoogle || []).push({}); }" class="block p-2 rounded-xl hover:bg-blue-50 transition font-bold">🖼️ 免费图片素材</a>
+                    <a href="/?category=亚洲AI新星" onclick="if(window.adsbygoogle) { (adsbygoogle = window.adsbygoogle || []).push({}); }" class="block p-2 rounded-xl hover:bg-blue-50 transition font-bold text-orange-600">⭐ 亚洲AI新星</a>
+                    <a href="/?category=多语言跨境神器" onclick="if(window.adsbygoogle) { (adsbygoogle = window.adsbygoogle || []).push({}); }" class="block p-2 rounded-xl hover:bg-blue-50 transition font-bold text-indigo-600">🌍 多语言跨境神器</a>
+                    <a href="/?category=其他免费资源" onclick="if(window.adsbygoogle) { (adsbygoogle = window.adsbygoogle || []).push({}); }" class="block p-2 rounded-xl hover:bg-blue-50 transition font-bold text-slate-400">🔍 其他免费资源</a>
+                </nav>
+
+                <div class="mt-6 pt-6 border-t border-slate-100">
+                    <p class="text-[10px] font-black text-slate-400 uppercase mb-4 tracking-widest text-center">AIPRM 联盟广告</p>
+                    <div class="space-y-3">
+                        <div class="p-4 rounded-2xl bg-purple-50 border border-purple-100 text-[11px] font-bold text-purple-700 text-center shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+                            Jasper AI 创作代理
+                        </div>
+                        <div class="p-4 rounded-2xl bg-teal-50 border border-teal-100 text-[11px] font-bold text-teal-700 text-center shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+                            Canva 专业设计工具
+                        </div>
+                    </div>
+                </div>
             </div>
         </aside>
 
-        <section class="col-span-12 md:col-span-6 space-y-4">
-            <h2 class="text-lg font-bold text-gray-800 flex items-center px-2">
-                <span class="w-2 h-6 bg-blue-600 mr-3 rounded-full"></span>最新更新
-            </h2>
+        <section id="postsList" class="flex-grow space-y-4">
             {% for post in posts %}
-            <article class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition">
-                 <h3 class="text-xl font-bold text-gray-900 mb-2">{{ post.title|replace('_', ' ') }}</h3>
-                 <p class="text-gray-400 text-xs mb-4">发布时间: {{ post.date }}</p>
-                 <a href="/post/{{ post.filename }}" target="_blank" class="inline-block bg-blue-600 text-white font-medium py-2 px-4 rounded-xl hover:bg-blue-700 shadow-lg transition-colors">立即阅读全文</a> <a href="/" class="text-blue-600 font-medium text-sm hover:underline">返回首页</a>
+            <article class="post-card bg-white p-6 rounded-[32px] flex flex-col md:flex-row justify-between items-center gap-4 shadow-sm">
+                <div class="flex-1 w-full">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="text-[10px] bg-blue-50 text-blue-600 px-3 py-1 rounded-full font-black uppercase inline-block">{{ post.category_key }}</span>
+                        <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">📅 Updated: {{ post.date }}</span>
+                    </div>
+                    <h3 class="post-title text-xl font-black text-slate-800 leading-tight">{{ post.title }}</h3>
+                </div>
+                <div class="flex gap-3 w-full md:w-auto">
+                    <a href="/post/{{ post.filename }}" class="flex-1 md:w-32 bg-blue-600 text-white font-bold py-3.5 rounded-2xl text-center text-sm shadow-lg hover:bg-blue-700 transition-colors">详情测评</a>
+                    <a href="{{ post.official_link }}" target="_blank" class="btn-outline-custom flex-1 md:w-32 py-3.5 rounded-2xl text-center text-sm font-bold">直达官网</a>
+                </div>
             </article>
             {% endfor %}
         </section>
 
-        <aside class="col-span-12 md:col-span-3 space-y-6">
-            <div class="bg-[#0f172a] p-6 rounded-2xl shadow-xl text-white">
-                <h3 class="text-sm font-medium mb-6">📊 实时监控</h3>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-white/5 p-4 rounded-xl text-center">
-                        <p class="text-2xl font-black text-blue-400">{{ total_count }}</p>
-                        <p class="text-[10px] text-gray-400 uppercase">总资源</p>
+        <aside class="w-full md:w-[320px] shrink-0">
+            <div class="bg-white p-6 rounded-[32px] shadow-sm border border-slate-100 mb-6">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-xl">✉️</div>
+                    <div class="flex-1">
+                        <h3 class="text-sm font-black text-slate-800">给站长留言</h3>
+                        <p class="text-[10px] text-slate-400 uppercase tracking-widest font-bold">Feedback</p>
                     </div>
-                    <div class="bg-white/5 p-4 rounded-xl text-center">
-                        <p class="text-green-400 font-bold">运行中</p>
-                        <p class="text-[10px] text-gray-400 uppercase">状态</p>
-                    </div>
+                    <a href="mailto:sbdtbqgyy@hotmail.com" class="bg-slate-900 text-white text-[10px] font-black px-4 py-2.5 rounded-xl hover:bg-blue-600 transition-colors">立即发送</a>
                 </div>
             </div>
 
-            <div class="bg-white p-2 rounded-2xl border border-gray-100 shadow-sm sticky top-24">
-                <div class="h-[600px] bg-gray-50 flex items-center justify-center border-2 border-dashed border-gray-200 rounded-xl">
-                    <span class="text-gray-300 text-xs text-center uppercase px-4">Google AdSense<br>(300x600)</span>
+            <div class="bg-slate-900 p-5 rounded-[40px] shadow-2xl text-white sticky top-24">
+                <div class="flex items-center justify-between mb-3 border-b border-white/5 pb-2">
+                    <div class="flex items-center gap-3">
+                        <div class="w-1.5 h-6 bg-blue-500 rounded-full"></div>
+                        <h3 class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Database Info</h3>
+                    </div>
+                    <span class="text-[10px] text-slate-600 font-bold uppercase">© 2026 AI测评指南</span>
+                </div>
+                
+                <div class="flex items-baseline gap-2 mb-4">
+                    <p class="text-5xl font-black text-blue-400 tracking-tighter leading-none">{{ total_count }}</p>
+                    <p class="text-[9px] text-slate-500 font-bold uppercase tracking-widest">已入库免费资源</p>
+                </div>
+                
+                <div class="pt-4 border-t border-white/10 sidebar-ad-container">
+                    <p class="text-[9px] font-bold text-amber-500 mb-2 uppercase tracking-widest text-center">— AD —</p>
+                    <div class="bg-white/5 rounded-2xl p-2 border border-white/5 text-center overflow-hidden h-[175px] max-h-[175px] flex items-center justify-center">
+                        
+                        <ins class="adsbygoogle"
+                             style="display:inline-block; width:100%; height:110px;"
+                             data-ad-client="ca-pub-6032281361790001"
+                             data-ad-slot=""
+                             data-ad-format="horizontal"
+                             data-full-width-responsive="false"></ins>
+                        <script>
+                             (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                        
+                    </div>
+                </div>
+
+                <div class="mt-4 pt-3 border-t border-white/10 flex flex-wrap gap-x-3 gap-y-1">
+                    <a href="/privacy" class="text-[9px] text-slate-400 hover:text-blue-400 font-bold uppercase">隐私政策</a>
+                    <a href="/terms" class="text-[9px] text-slate-400 hover:text-blue-400 font-bold uppercase">服务条款</a>
+                    <a href="/contact" class="text-[9px] text-slate-400 hover:text-blue-400 font-bold uppercase">联系我们</a>
                 </div>
             </div>
         </aside>
     </main>
+
+    <script type="text/javascript">
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const val = e.target.value.toLowerCase();
+            document.querySelectorAll('.post-card').forEach(card => {
+                const title = card.querySelector('.post-title').innerText.toLowerCase();
+                card.style.display = title.includes(val) ? 'flex' : 'none';
+            });
+        });
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'zh-CN', includedLanguages: 'en,ja,ko,ru,fr', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>

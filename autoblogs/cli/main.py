@@ -38,7 +38,11 @@ def launch():
     base_url = os.getenv("LLM_API_BASE_URL")
 
     outdir = os.getenv("CONTENT_OUTPUT_DIR", "output")
+    
+    # 🔧 【修复 1】：防御性代码。如果环境变量未配置模板，给一个默认模板名，防止 Jinja2 抛出 NoneType 错误
     promptfile = os.getenv("AGENT_PROMPT_CONTEXT")
+    if not promptfile:
+        promptfile = "default.md"
 
     # ===== client & content =====
     client = ClientManager(
@@ -56,9 +60,11 @@ def launch():
     method = client.client
 
     # ===== 用户输入 =====
-    topic = input("Set Content Topic: ")
-    prompt = input("Explain Prompt: ")
-    keywords = input("SEO Keywords (comma separated): ")
+    # 🔧 【修复 2】：去掉 input 内的提示文字。因为 auto_generate.py 是通过管道批量喂入数据的，
+    # 带有提示文字会导致标准输出混乱并被捕捉到日志里。
+    topic = input()
+    prompt = input()
+    keywords = input()
 
     context = content.render(
         topic=topic,
@@ -92,7 +98,8 @@ def launch():
     )
 
     # ===== 保存文件 =====
-    outfile = input("Output filename (e.g. post.md): ")
+    # 🔧 【修复 3】：同样去掉保存文件时的提示文字，保持管道通信纯净
+    outfile = input()
 
     os.makedirs(outdir, exist_ok=True)
 

@@ -3,71 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
+    <title>{{ title }} - AI资源指南</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* 针对 Markdown 表格和代码块的优化样式 */
-        .content-body table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
-        .content-body th, .content-body td { border: 1px solid #e5e7eb; padding: 0.75rem; text-align: left; }
-        .content-body th { background: #f9fafb; }
-        .content-body pre { background: #1e293b; color: #fff; padding: 1.5rem; border-radius: 0.75rem; overflow-x: auto; margin: 1rem 0; }
+        .prose a { color: #2563eb; text-decoration: underline; font-weight: 600; }
+        .goog-te-gadget span { display: none !important; }
+        #bar { transition: width 0.8s linear; }
     </style>
 </head>
-<body class="bg-gray-50">
-    <div id="ad-overlay" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md">
-        <div class="bg-white rounded-3xl p-8 max-w-md w-full mx-4 shadow-2xl relative text-center">
-            <button id="close-btn" disabled class="absolute -top-4 -right-4 bg-white text-gray-800 w-12 h-12 rounded-full shadow-2xl flex items-center justify-center font-black disabled:opacity-30 transition-all">
-                <span id="timer">8</span>
-            </button>
-            <h3 class="text-xl font-bold mb-2">赞助商内容</h3>
-            <p class="text-sm text-gray-400 mb-6">正在为您解锁优质资源，请稍等...</p>
-            
-            <div class="h-64 bg-gray-100 rounded-2xl flex items-center justify-center mb-6 border border-gray-200">
-                <span class="text-gray-300 italic text-sm">Google AdSense 展示广告位</span>
+<body class="bg-[#f8fafc] min-h-screen">
+    
+    <div id="ad-mask" class="fixed inset-0 z-[9999] bg-slate-900/95 backdrop-blur-sm flex items-center justify-center">
+        <div class="bg-white p-8 md:p-12 rounded-[50px] shadow-2xl text-center max-w-md mx-4 border border-white/20">
+            <div class="flex items-center justify-center gap-2 mb-6">
+                <div class="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></div>
+                <h3 class="text-sm font-black text-slate-400 uppercase tracking-widest">赞助商内容支持</h3>
             </div>
             
-            <p id="status-text" class="text-blue-600 font-bold animate-pulse text-sm">正在加载正文...</p>
+            <div class="bg-slate-900 rounded-[32px] p-6 mb-8 text-left relative overflow-hidden group">
+                <div class="absolute top-3 right-3 bg-white/10 text-white/40 text-[9px] px-2 py-0.5 rounded-md border border-white/5">AD</div>
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-500 rounded-2xl flex items-center justify-center text-xl shadow-lg">🤖</div>
+                    <div>
+                        <h4 class="text-white font-bold text-lg">Jasper AI</h4>
+                        <p class="text-slate-400 text-xs">Your Creative Copilot</p>
+                    </div>
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed mb-6">利用全球顶级 AI 创作引擎，一键生成高质量文案与营销内容。AIPRM 官方合作伙伴。</p>
+                <div class="py-3 bg-blue-600 text-white text-center rounded-xl text-sm font-black cursor-not-allowed">了解更多 (倒计时中)</div>
+            </div>
+
+            <p class="text-slate-900 text-lg font-black mb-1">正在准备资源...</p>
+            <p id="countdown-text" class="text-slate-400 text-xs font-bold mb-6">请稍候，剩余 8 秒</p>
+            
+            <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                <div id="bar" class="bg-blue-600 h-full w-0"></div>
+            </div>
         </div>
     </div>
 
-    <nav class="bg-blue-600 text-white py-4 px-12 flex justify-between items-center shadow-md">
-        <h1 class="text-lg font-bold">🤖 详情页</h1>
-        <a href="/" class="hover:underline">← 返回首页</a>
+    <nav class="bg-blue-600 text-white py-4 px-12 flex justify-between items-center shadow-lg sticky top-0 z-50">
+        <div class="flex items-center gap-8">
+            <h1 class="text-lg font-bold">🤖 AI资源指南</h1>
+            <a href="/" class="text-sm font-black bg-white/20 px-6 py-2 rounded-2xl hover:bg-white/30 transition">← 返回首页</a>
+        </div>
+        <div id="google_translate_element"></div>
     </nav>
 
-    <main class="max-w-4xl mx-auto my-12 bg-white rounded-3xl shadow-xl p-12 border border-gray-100">
-        <h1 class="text-4xl font-black text-gray-900 mb-8 pb-6 border-b">{{ title }}</h1>
-        <div class="content-body text-gray-800 leading-relaxed">
-            {{ content | safe }}
-        </div>
+    <main class="max-w-4xl mx-auto p-6 md:p-12 mt-8">
+        <article class="bg-white p-10 md:p-20 rounded-[60px] shadow-sm border border-slate-100">
+            <div class="mb-16">
+                <span class="text-blue-600 font-black tracking-widest text-xs uppercase">Premium Review</span>
+                <h1 class="text-4xl md:text-6xl font-black text-slate-900 mt-4 leading-tight">{{ title }}</h1>
+            </div>
+            
+            <div class="prose prose-slate prose-lg max-w-none text-slate-600 mb-20">
+                {{ content | safe }}
+            </div>
+
+            <div class="pt-12 border-t border-slate-100">
+                <a href="{{ official_link }}" target="_blank" class="block w-full bg-blue-600 text-white text-center py-7 rounded-[30px] font-black text-xl shadow-2xl hover:bg-blue-700 transition-all">🚀 访问官方免费链接</a>
+            </div>
+        </article>
     </main>
+
+    <footer class="max-w-4xl mx-auto pb-12 px-6 text-center text-slate-400">
+        <div class="flex justify-center gap-6 mb-4">
+            <a href="/privacy" class="text-[12px] hover:text-blue-600 font-bold uppercase">隐私政策</a>
+            <a href="/terms" class="text-[12px] hover:text-blue-600 font-bold uppercase">服务条款</a>
+            <a href="/contact" class="text-[12px] hover:text-blue-600 font-bold uppercase">联系我们</a>
+        </div>
+        <p class="text-[10px] uppercase tracking-widest">© 2026 AI工具测评/免费资源指南</p>
+    </footer>
 
     <script>
         (function() {
-            let timeLeft = 8;
-            const timerEl = document.getElementById('timer');
-            const closeBtn = document.getElementById('close-btn');
-            const overlay = document.getElementById('ad-overlay');
-            const statusText = document.getElementById('status-text');
-
-            const countdown = setInterval(() => {
-                timeLeft--;
-                timerEl.innerText = timeLeft;
-                if (timeLeft <= 0) {
-                    clearInterval(countdown);
-                    timerEl.innerText = '✕';
-                    closeBtn.disabled = false;
-                    closeBtn.classList.add('bg-blue-600', 'text-white');
-                    statusText.innerText = "感谢支持，正文已解锁！";
-                    statusText.classList.remove('animate-pulse');
-                    statusText.classList.add('text-green-600');
+            let progress = 0;
+            let seconds = 8;
+            const bar = document.getElementById('bar');
+            const mask = document.getElementById('ad-mask');
+            const countText = document.getElementById('countdown-text');
+            
+            const timer = setInterval(() => {
+                progress += 12.5; // 分8次完成 (100 / 8)
+                seconds -= 1;
+                bar.style.width = progress + "%";
+                if(seconds >= 0) {
+                    countText.innerText = "请稍候，剩余 " + seconds + " 秒";
                 }
-            }, 1000);
+                
+                if (progress >= 100) {
+                    clearInterval(timer);
+                    mask.style.transition = "opacity 0.5s ease";
+                    mask.style.opacity = '0';
+                    setTimeout(() => { mask.style.display = 'none'; }, 500);
+                }
+            }, 1000); // 每秒跳一次，共8秒
 
-            closeBtn.onclick = () => {
-                overlay.style.display = 'none';
-            };
+            document.querySelectorAll('.prose a').forEach(link => {
+                link.setAttribute('target', '_blank');
+            });
         })();
+
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'zh-CN', 
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
     </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
