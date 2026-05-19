@@ -82,9 +82,9 @@ for i, topic in enumerate(topics):
             category = "免费AI教学资源"
         elif any(x in content_l for x in ["写作", "文案", "write"]): 
             category = "免费AI写作"
-        elif any(x in content_l for x in ["工具", "ai", "agent", "autogpt"]): 
-            category = "免费的AI工具"
-        else: 
+        # 找到这一行，把 chatgpt, 自动化, 副业 全补进这个桶里
+    elif any(x in content_l for x in ["工具", "ai", "agent", "autogpt", "chatgpt", "自动化", "副业"]): 
+        category = "免费的AI工具"        else: 
             category = "其他免费资源"
 
         # 读取文件，把模板默认的 "#Category: 免费的AI工具" 替换为算出来的精准分类
